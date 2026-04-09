@@ -10,7 +10,7 @@ const flavors = [
 
 export default function DeliyogurtLandingPage() {
   // Reemplazar TU_NUMERO_DE_WHATSAPP con el número real de tu cliente (con código de país, ej. 52953...)
-  const whatsappLink = "https://wa.me/TUNUMERODEWHATSAPP?text=Hola%20Deli%20Yogurt!%20Me%20interesa%20hacer%20un%20pedido.";
+  const whatsappLink = "https://wa.me/529531860151?text=Hola%20Deli%20Yogurt!%20Me%20interesa%20hacer%20un%20pedido.";
 
   return (
     // Fondo general color crema suave. Usamos flex-col para empujar el footer hacia abajo.
@@ -63,40 +63,6 @@ export default function DeliyogurtLandingPage() {
         {/* =========================================
             SECCIÓN TESTIMONIOS
             ========================================= */}
-        <section className="py-16 md:py-24 px-4 md:px-12 border-b-8 border-amber-900/10 mb-16 md:mb-20">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-amber-950 mb-12 md:mb-16 tracking-tight font-serif">100% Natural, Fresco y Delicioso</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-              {[
-                { name: 'Ana K.', text: '¡El mejor yogurt que he probado! Sabor auténtico y textura perfecta.' },
-                { name: 'Juan M.', text: 'Siempre fresco y delicioso. ¡Lo recomiendo a todos mis amigos!' },
-                { name: 'Laura S.', text: '¡Me encanta el sabor! Es el único yogurt que compro.' }
-              ].map((testimonial, i) => (
-                <div key={i} className="rounded-3xl border border-amber-900/10 bg-[#FFFBF7] p-8 shadow-sm flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform group">
-                  {/* Avatar con diseño de la imagen */}
-                  <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full border-4 border-amber-900/10 flex items-center justify-center shadow-md overflow-hidden transition-all duration-300 group-hover:border-pink-200">
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-500 rounded-full border-4 border-white flex items-center justify-center">
-                        <Image src="/avatar.png" alt="Avatar cliente" width={80} height={80} className="object-cover rounded-full" />
-                    </div>
-                  </div>
-                  {/* Estrellas */}
-                  <div className="flex items-center gap-1 text-amber-500 mb-2 md:mb-4">
-                      {Array.from({ length: 5 }).map((_, star) => (
-                        <Star key={star} size={20} className="fill-amber-400 text-amber-500" />
-                      ))}
-                  </div>
-                  {/* Comentario */}
-                  <p className="text-base text-stone-600 leading-relaxed font-sans italic text-center">
-                    "{testimonial.text}"
-                  </p>
-                  {/* Nombre */}
-                  <h3 className="font-bold text-lg text-amber-950 font-serif mt-2">{testimonial.name}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* =========================================
             SECCIÓN GALERÍA
