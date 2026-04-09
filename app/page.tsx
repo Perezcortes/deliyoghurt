@@ -1,65 +1,236 @@
-import Image from "next/image";
+import { ArrowRight, Leaf, Heart, ShieldCheck, MapPin, Search, PackageCheck, Star, GlassWater } from 'lucide-react';
+import Image from 'next/image';
 
-export default function Home() {
+const flavors = [
+  { name: 'Manzana', src: '/yoghurt1.jpeg' },
+  { name: 'Durazno', src: '/yoghurt2.jpeg' },
+  { name: 'Nuez', src: '/yoghurt3.jpeg' },
+  { name: 'Gelatina', src: '/yoghurt4.jpeg' },
+];
+
+export default function DeliyogurtLandingPage() {
+  // Reemplazar TU_NUMERO_DE_WHATSAPP con el número real de tu cliente (con código de país, ej. 52953...)
+  const whatsappLink = "https://wa.me/TUNUMERODEWHATSAPP?text=Hola%20Deli%20Yogurt!%20Me%20interesa%20hacer%20un%20pedido.";
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    // Fondo general color crema suave. Usamos flex-col para empujar el footer hacia abajo.
+    <div className="min-h-screen bg-[#FDFBF7] text-stone-800 font-sans antialiased flex flex-col">
+      
+      {/* =========================================
+          CONTENEDOR CENTRAL (Principal)
+          ========================================= */}
+      <main className="flex-grow max-w-7xl mx-auto w-full bg-[#FFFDF9] shadow-2xl md:rounded-3xl p-6 md:p-12 md:mt-8 relative overflow-hidden border border-amber-900/10 md:shadow-[0_30px_60px_-15px_rgba(219,196,167,0.4)]">
+        
+        {/* =========================================
+            SECCIÓN HERO (HEADER)
+            ========================================= */}
+        <header className="relative py-12 md:py-20 px-4 md:px-12 border-b-8 border-amber-900/10 mb-16 flex flex-col md:flex-row items-center gap-12">
+          
+          {/* Logo y Texto Principal */}
+          <div className="flex-1 text-center md:text-left">
+          
+            
+            <h1 className="text-4xl md:text-6xl font-extrabold text-amber-950 mb-6 tracking-tighter leading-tight font-serif">
+              Yogurt <span className="text-pink-600">Artesanal</span><br/> 100% natural en Tlaxiaco.
+            </h1>
+            <p className="text-lg md:text-2xl font-semibold text-stone-800 mb-8 leading-relaxed">
+              Sin conservadores, hecho con amor y tradición Mixteca.
+            </p>
+            
+            <a 
+              href={whatsappLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex w-full md:w-auto items-center justify-center bg-green-700 hover:bg-green-800 text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl gap-3 font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 transform"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <GlassWater size={24} />
+              Ordena por WhatsApp
+            </a>
+          </div>
+          
+          {/* Imagen Hero Destacada */}
+          <div className="flex-1 relative aspect-square w-full max-w-md md:max-w-lg mx-auto p-4 md:p-5 rounded-[40px] border-8 border-white bg-white shadow-[0_25px_50px_-12px_rgba(219,196,167,0.3)] flex items-center justify-center overflow-hidden transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(219,196,167,0.4)]">
+             <Image 
+               src="/destacada.jpeg" 
+               alt="Yogurt artesanal con frutas y granola destacado" 
+               fill 
+               className="object-cover rounded-[30px]" 
+               sizes="(max-width: 768px) 100vw, 50vw"
+             />
+          </div>
+        </header>
+
+        {/* =========================================
+            SECCIÓN TESTIMONIOS
+            ========================================= */}
+        <section className="py-16 md:py-24 px-4 md:px-12 border-b-8 border-amber-900/10 mb-16 md:mb-20">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-amber-950 mb-12 md:mb-16 tracking-tight font-serif">100% Natural, Fresco y Delicioso</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+              {[
+                { name: 'Ana K.', text: '¡El mejor yogurt que he probado! Sabor auténtico y textura perfecta.' },
+                { name: 'Juan M.', text: 'Siempre fresco y delicioso. ¡Lo recomiendo a todos mis amigos!' },
+                { name: 'Laura S.', text: '¡Me encanta el sabor! Es el único yogurt que compro.' }
+              ].map((testimonial, i) => (
+                <div key={i} className="rounded-3xl border border-amber-900/10 bg-[#FFFBF7] p-8 shadow-sm flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform group">
+                  {/* Avatar con diseño de la imagen */}
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full border-4 border-amber-900/10 flex items-center justify-center shadow-md overflow-hidden transition-all duration-300 group-hover:border-pink-200">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-500 rounded-full border-4 border-white flex items-center justify-center">
+                        <Image src="/avatar.png" alt="Avatar cliente" width={80} height={80} className="object-cover rounded-full" />
+                    </div>
+                  </div>
+                  {/* Estrellas */}
+                  <div className="flex items-center gap-1 text-amber-500 mb-2 md:mb-4">
+                      {Array.from({ length: 5 }).map((_, star) => (
+                        <Star key={star} size={20} className="fill-amber-400 text-amber-500" />
+                      ))}
+                  </div>
+                  {/* Comentario */}
+                  <p className="text-base text-stone-600 leading-relaxed font-sans italic text-center">
+                    "{testimonial.text}"
+                  </p>
+                  {/* Nombre */}
+                  <h3 className="font-bold text-lg text-amber-950 font-serif mt-2">{testimonial.name}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================
+            SECCIÓN GALERÍA
+            ========================================= */}
+        <section className="bg-white py-16 md:py-24 px-4 md:px-12 border-b-8 border-amber-900/10 mb-16 md:mb-20 rounded-[40px] shadow-[0_15px_30px_-10px_rgba(219,196,167,0.2)]">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-10">
+               <PackageCheck className="text-amber-700" size={36} />
+               <h2 className="text-3xl md:text-5xl font-extrabold text-amber-950 tracking-tighter font-serif">Galería en Detalle</h2>
+            </div>
+            
+            {/* Grid Asimétrico: Responsive */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
+              
+              {/* Foto Grande 1 (yoghurts.jpeg - Nevera) */}
+              <div className="md:col-span-1 relative rounded-[30px] border-4 border-amber-900/10 overflow-hidden bg-white shadow-xl p-2 md:p-3">
+                <div className="aspect-square md:aspect-[4/5] relative rounded-[20px] overflow-hidden">
+                  <Image 
+                    src="/yoghurts.jpeg" 
+                    alt="Varios recipientes de yogurt en la nevera" 
+                    fill 
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              </div>
+              
+              {/* Cuadrícula de 4 Fotos */}
+              <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 h-full">
+                {flavors.map((flavor, index) => (
+                  <div key={index} className="relative rounded-[30px] border-4 border-amber-900/10 overflow-hidden bg-white shadow-xl p-2 md:p-3 group transition-all duration-300 hover:border-pink-300">
+                    <div className="aspect-square relative rounded-[20px] mb-4 overflow-hidden">
+                      <Image 
+                        src={flavor.src} 
+                        alt={`Vaso de yogurt sabor ${flavor.name}`} 
+                        fill 
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between p-2">
+                      <h3 className="font-bold text-lg md:text-xl text-amber-950 font-serif leading-tight">{flavor.name}</h3>
+                      <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-pink-500 shadow-inner flex-shrink-0"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================
+            BANNER CTA INTERMEDIO
+            ========================================= */}
+        <section className="bg-green-700 text-white py-12 md:py-16 px-6 md:px-12 border-t-8 border-green-800 shadow-xl rounded-2xl flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left mb-16 md:mb-20 overflow-hidden relative">
+          <Leaf size={40} className="text-green-200 hidden md:block" />
+          <p className="text-2xl md:text-3xl font-extrabold tracking-tight font-serif leading-tight">
+            Haz tu pedido ahora por WhatsApp
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <ArrowRight size={28} className="hidden md:block text-green-200" />
+        </section>
+
+        {/* =========================================
+            SECCIÓN PREGUNTAS FRECUENTES (FAQ)
+            ========================================= */}
+        <section className="bg-[#FFF8EE] py-16 md:py-24 px-4 md:px-12 border-t border-amber-900/10 border-b-8 border-amber-900/10 shadow-inner mb-16 md:mb-20 rounded-[40px]">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-amber-950 mb-12 md:mb-16 tracking-tight font-serif">Preguntas Frecuentes</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-left">
+              {[
+                { icon: Heart, question: '¿El yogurt tiene conservadores?', answer: 'No, es 100% natural.' },
+                { icon: MapPin, question: '¿Dónde entregan?', answer: 'En Tlaxiaco y alrededores.' },
+                { icon: Search, question: '¿Cómo pido?', answer: 'Fácil, por WhatsApp.' },
+                { icon: ShieldCheck, question: '¿Puedo apartar pedido?', answer: 'Sí, claro, reserva con anticipación.' }
+              ].map((faq, i) => (
+                <div key={i} className="p-6 md:p-8 rounded-[30px] border-4 border-amber-900/10 bg-white shadow-lg transition-all duration-300 hover:border-pink-300 group">
+                  <h3 className="text-lg md:text-xl font-bold text-amber-950 flex items-center gap-3 mb-3 md:mb-4 font-serif leading-tight">
+                    <faq.icon size={28} className="text-green-700 transition-colors group-hover:text-green-800 flex-shrink-0" /> 
+                    {faq.question}
+                  </h3>
+                  <p className="text-stone-700 leading-relaxed text-base font-sans pl-10">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================
+            SECCIÓN FINAL (CTA) - Cambiado de footer a section
+            ========================================= */}
+        <section className="py-12 md:py-20 px-4 md:px-12 text-center rounded-b-3xl">
+          <div className="max-w-xl mx-auto">
+            <a 
+              href={whatsappLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex w-full md:w-auto items-center justify-center bg-green-700 hover:bg-green-800 text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl gap-3 font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 transform"
+            >
+              <GlassWater size={24} />
+              Ordena ahora por WhatsApp
+            </a>
+            <p className="mt-6 md:mt-8 text-sm md:text-base text-stone-500 font-sans font-medium">
+              Te garantizamos una experiencia láctea artesanal inolvidable. ¡Hecho con amor y tradición Mixteca!
+            </p>
+          </div>
+        </section>
+
       </main>
+
+      {/* =========================================
+          EL VERDADERO FOOTER (Fuera del contenedor principal)
+          ========================================= */}
+      <footer className="w-full bg-amber-950 text-amber-50 py-10 px-6 mt-10 md:mt-16">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+          
+          {/* Marca / Ubicación */}
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <div className="flex items-center gap-2">
+              <Leaf size={20} className="text-green-500" />
+              <span className="font-serif font-bold text-xl tracking-wide">Deli Yogurt</span>
+            </div>
+            <p className="text-sm text-amber-200/80">Heroica Ciudad de Tlaxiaco, Oaxaca.</p>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-sm text-amber-200/60">
+            <p>© {new Date().getFullYear()} Deli Yogurt. Todos los derechos reservados.</p>
+          </div>
+          
+        </div>
+      </footer>
+
     </div>
   );
 }
