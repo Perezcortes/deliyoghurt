@@ -2,23 +2,18 @@ import { ArrowRight, Leaf, Heart, ShieldCheck, MapPin, Search, PackageCheck, Sta
 import Image from 'next/image';
 
 const flavors = [
-  { name: 'Manzana', src: '/yoghurt1.jpeg' },
-  { name: 'Durazno', src: '/yoghurt2.jpeg' },
-  { name: 'Nuez', src: '/yoghurt3.jpeg' },
-  { name: 'Gelatina', src: '/yoghurt4.jpeg' },
+  { name: 'Fresa', src: '/yoghurt1.jpeg' },
+  { name: 'Gelatina', src: '/yoghurt2.jpeg' },
+  { name: 'Cereal', src: '/yoghurt3.jpeg' },
+  { name: 'Nuez', src: '/yoghurt4.jpeg' },
 ];
 
 export default function DeliyogurtLandingPage() {
-  // Reemplazar TU_NUMERO_DE_WHATSAPP con el número real de tu cliente (con código de país, ej. 52953...)
   const whatsappLink = "https://wa.me/529531860151?text=Hola%20Deli%20Yogurt!%20Me%20interesa%20hacer%20un%20pedido.";
 
   return (
-    // Fondo general color crema suave. Usamos flex-col para empujar el footer hacia abajo.
     <div className="min-h-screen bg-[#FDFBF7] text-stone-800 font-sans antialiased flex flex-col">
       
-      {/* =========================================
-          CONTENEDOR CENTRAL (Principal)
-          ========================================= */}
       <main className="flex-grow max-w-7xl mx-auto w-full bg-[#FFFDF9] shadow-2xl md:rounded-3xl p-6 md:p-12 md:mt-8 relative overflow-hidden border border-amber-900/10 md:shadow-[0_30px_60px_-15px_rgba(219,196,167,0.4)]">
         
         {/* =========================================
@@ -26,9 +21,19 @@ export default function DeliyogurtLandingPage() {
             ========================================= */}
         <header className="relative py-12 md:py-20 px-4 md:px-12 border-b-8 border-amber-900/10 mb-16 flex flex-col md:flex-row items-center gap-12">
           
-          {/* Logo y Texto Principal */}
-          <div className="flex-1 text-center md:text-left">
-          
+          {/* Logo centrado y Texto Principal */}
+          <div className="flex-1 flex flex-col text-center md:text-left">
+            
+            {/* Logo más grande y centrado justo arriba del título */}
+            <div className="self-center mb-8 relative w-56 h-32 md:w-72 md:h-40 transition-transform duration-300 hover:scale-105">
+              <Image 
+                src="/logo.png" 
+                alt="Deli Yogurt Logo" 
+                fill 
+                className="object-contain" 
+                priority
+              />
+            </div>
             
             <h1 className="text-4xl md:text-6xl font-extrabold text-amber-950 mb-6 tracking-tighter leading-tight font-serif">
               Yogurt <span className="text-pink-600">Artesanal</span><br/> 100% natural en Tlaxiaco.
@@ -41,7 +46,7 @@ export default function DeliyogurtLandingPage() {
               href={whatsappLink} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex w-full md:w-auto items-center justify-center bg-green-700 hover:bg-green-800 text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl gap-3 font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 transform"
+              className="inline-flex w-full md:w-auto items-center justify-center bg-green-700 hover:bg-green-800 text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl gap-3 font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 transform self-center md:self-start"
             >
               <GlassWater size={24} />
               Ordena por WhatsApp
@@ -56,16 +61,13 @@ export default function DeliyogurtLandingPage() {
                fill 
                className="object-cover rounded-[30px]" 
                sizes="(max-width: 768px) 100vw, 50vw"
+               priority
              />
           </div>
         </header>
 
         {/* =========================================
-            SECCIÓN TESTIMONIOS
-            ========================================= */}
-
-        {/* =========================================
-            SECCIÓN GALERÍA
+            SECCIÓN GALERÍA EN DETALLE
             ========================================= */}
         <section className="bg-white py-16 md:py-24 px-4 md:px-12 border-b-8 border-amber-900/10 mb-16 md:mb-20 rounded-[40px] shadow-[0_15px_30px_-10px_rgba(219,196,167,0.2)]">
           <div className="max-w-7xl mx-auto text-center">
@@ -74,7 +76,6 @@ export default function DeliyogurtLandingPage() {
                <h2 className="text-3xl md:text-5xl font-extrabold text-amber-950 tracking-tighter font-serif">Galería en Detalle</h2>
             </div>
             
-            {/* Grid Asimétrico: Responsive */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
               
               {/* Foto Grande 1 (yoghurts.jpeg - Nevera) */}
@@ -153,7 +154,7 @@ export default function DeliyogurtLandingPage() {
         </section>
 
         {/* =========================================
-            SECCIÓN FINAL (CTA) - Cambiado de footer a section
+            SECCIÓN FINAL (CTA)
             ========================================= */}
         <section className="py-12 md:py-20 px-4 md:px-12 text-center rounded-b-3xl">
           <div className="max-w-xl mx-auto">
@@ -175,12 +176,11 @@ export default function DeliyogurtLandingPage() {
       </main>
 
       {/* =========================================
-          EL VERDADERO FOOTER (Fuera del contenedor principal)
+          EL VERDADERO FOOTER
           ========================================= */}
       <footer className="w-full bg-amber-950 text-amber-50 py-10 px-6 mt-10 md:mt-16">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           
-          {/* Marca / Ubicación */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2">
               <Leaf size={20} className="text-green-500" />
@@ -189,7 +189,6 @@ export default function DeliyogurtLandingPage() {
             <p className="text-sm text-amber-200/80">Heroica Ciudad de Tlaxiaco, Oaxaca.</p>
           </div>
 
-          {/* Copyright */}
           <div className="text-sm text-amber-200/60">
             <p>© {new Date().getFullYear()} Deli Yogurt. Todos los derechos reservados.</p>
           </div>
